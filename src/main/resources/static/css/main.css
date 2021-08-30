@@ -1,0 +1,122 @@
+:root{
+    --color-main: #252525;
+    --color-main-light: #525252;
+    --color-main-dark: #0A0A0A;
+    --color-font: #EBEBEB;
+    --color-accent: #EB7E1E;
+    --color-accent-light: #F8D4B4;
+    --color-accent-dark: #83430B;
+}
+
+body{
+    background-color: var(--color-main);
+    background-size: contain;
+    overflow-x: hidden;
+}
+
+header{
+    width: calc(100% - 16px);
+    position: sticky;
+    top: 0;
+    left: 0;
+    padding: 8px;
+    z-index: 99;
+}
+
+header a img{
+    width: 200px;
+}
+
+#movies{
+    width: 90%;
+    height: 90%;
+    margin: 5%;
+    display: grid;
+    grid-template-columns: 16.667% 16.667% 16.667% 16.667% 16.667% 16.667%;
+}
+
+#search-container{
+    margin: auto;
+    width: 60%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    text-align: center;
+}
+::placeholder {
+    color: var(--color-accent);
+    opacity: 1;
+}
+#search-input{
+    padding: 16px;
+    border-radius: 8px;
+    border-color: var(--color-accent);
+    background-color: transparent;
+    color: var(--color-accent);
+    font-size: 1.5rem;
+    margin: 8px;
+}
+
+#search-input:hover{
+    box-shadow: 0 0 5px 2px var(--color-accent);
+}
+
+#search-input:focus{
+    outline: none;
+    box-shadow: 0 0 5px 2px var(--color-accent);
+}
+
+#search-genre{
+    padding: 16px;
+    border-radius: 8px;
+    border-color: var(--color-accent);
+    background-color: transparent;
+    color: var(--color-accent);
+    font-size: 1.5rem;
+    margin: 8px;
+}
+
+#search-genre:focus{
+    outline: none;
+}
+
+.display-none{
+    display: none;
+}
+
+@media only screen and (max-width: 1200px) {
+    header a{
+        display: flex;
+    }
+    header a img{
+        width: 300px;
+        margin: auto;
+    }
+    #movies{
+        grid-template-columns: 25% 25% 25% 25%;
+    }
+    #search-container{
+        grid-template-columns: 100%;
+    }
+    #search-input, #search-genre{
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    header a{
+        display: flex;
+    }
+    header a img{
+        width: 150px;
+        margin: auto;
+    }
+    #movies{
+        grid-template-columns: 33% 33% 33%;
+    }
+    #search-container{
+        width: 80%;
+    }
+    #search-input, #search-genre{
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="de">
+<head th:replace="_frame::head('Admin')"></head>
+<head>
+    <link rel="stylesheet" href="/css/admin.css" th:href="@{/css/admin.css}">
+</head>
+<body>
+<header th:replace="_frame::header"></header>
+    <div id="admin-useragent-name">
+        <label for="useragent-name">Name</label>
+        <input id="useragent-name" type="text" th:value="${useragent.getUsername()}">
+        <button id="btn-save-useragent-name" type="button">Name speichern</button>
+    </div>
+    <div id="admin-movies">
+        <table>
+            <tr th:each="movie : ${movies}">
+                <td>
+                    <a th:href="'/admin/movie?movieid=' + ${movie.getId()}">
+                        <div class="w-10">
+                            <span>ID</span>
+                            <span th:text="${movie.getId()}"></span>
+                        </div>
+                        <div class="w-80">
+                            <span>Titel</span>
+                            <span th:text="${movie.getTitle()}"></span>
+                        </div>
+                        <div class="w-10">
+                            <span>Aktiv</span>
+                            <span th:text="${movie.isActivated() ? 'Aktiv' : 'Inaktiv'}"></span>
+                        </div>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+<script th:src="@{/js/admin.js}" src="../../static/js/admin.js"></script>
+</body>
+</html>

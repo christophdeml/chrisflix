@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="de">
+<head th:replace="_frame::head('Admin')"></head>
+<head>
+    <link rel="stylesheet" href="/css/admin.css" th:href="@{/css/admin.css}">
+</head>
+<body>
+<header th:replace="_frame::header"></header>
+<th:block th:if="${error != null}">
+    <h1>Der erwartete Film konnte nicht gefunden werden.</h1>
+</th:block>
+<th:block th:unless="${error != null}">
+    <div id="admin-edit-movie">
+        <form>
+            <div class="flex-column">
+                <input class="hidden" th:value="${movie.getId()}">
+                <div class="border-around flex-column">
+                    <label for="title">Titel</label>
+                    <input type="text" id="title" th:value="${movie.getTitle()}">
+                </div>
+                <div class="border-around flex-column">
+                    <label for="description">Beschreibung</label>
+                    <textarea id="description" th:text="${movie.getDesciptionLong()}"></textarea>
+                </div>
+                <div class="border-around flex-column">
+                    <label for="buzzwords">Schlagwörter</label>
+                    <textarea id="buzzwords" th:text="${movie.getBuzzwords()}"></textarea>
+                </div>
+                <div class="border-around flex-column">
+                    <label for="actors">Schauspieler</label>
+                    <textarea id="actors" th:text="${movie.getActors()}"></textarea>
+                </div>
+            </div>
+            <div class="flex-row button-container">
+                <button type="button">Abbrechen</button>
+                <button type="submit">Speichern</button>
+            </div>
+        </form>
+    </div>
+</th:block>
+</body>
+</html>

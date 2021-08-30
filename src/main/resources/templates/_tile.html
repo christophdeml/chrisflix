@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="de">
+<div th:fragment="tile(id, name, genre, buzzwords, actors)" is="tile" class="tile" th:data-movieid="${id ?: ' '}" th:data-movie-name="${name ?: ' '}" th:data-movie-genre="${genre ?: ' '}" th:data-movie-buzzwords="${buzzwords ?: ' '}" th:data-movie-actors="${actors ?: ' '}">
+    <h1 class="tile-title" th:text="${name}"></h1>
+    <script>window.innerWidth</script>
+    <img th:src="'/images/' + ${name} + '.png'" alt="Fuuuu">
+</div>
+</html>

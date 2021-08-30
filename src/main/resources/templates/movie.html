@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="de">
+<head th:replace="_frame::head(${movie.getTitle()})"></head>
+<head>
+    <link rel="stylesheet" href="../../resources/static/css/movie.css" th:href="@{/css/movie.css}">
+</head>
+<body style="overflow: hidden">
+<header th:replace="_frame::header"></header>
+<div class="movie">
+    <div class="movie-text">
+        <div class="movie-text-header">
+            <h1 th:text="${movie.getTitle()}"></h1>
+            <div class="play-button-container play-button-container--small">
+                <a class="play-button" th:data-href="'/movie?movieid=' + ${movie.getId()} + '&play=true'">&RightTriangle;</a>
+                <a th:if="${movie.getPlayedTimeInSeconds() != null && movie.getPlayedTimeInSeconds() > 120}" class="play-button" th:href="'/movie/play?movieid=' + ${movie.getId()} + '&seconds=' + ${movie.getPlayedTimeInSeconds()}"></a>
+                <select class="select-device">
+                    <option selected th:text="${userAgent.getUsername() + ' (self)'}" th:value="${userAgent.getId()}"></option>
+                    <th:block th:each="userAgent : ${userAgents}">
+                        <option th:text="${userAgent.getUsername()}" th:value="${userAgent.getId()}"></option>
+                    </th:block>
+                </select>
+            </div>
+            <div class="movie-text-header-info">
+                <span th:text="${movie.getImdbScore() + '/10'}"></span><br>
+                <span th:text="${movie.getYear()}"></span><br>
+                <span th:text="${movie.getGenreFrontend()}"></span><br><br>
+                <span>Mit </span><span th:text="${movie.getActorsFrontend()}"></span>
+            </div>
+        </div>
+        <span class="description" th:text="${movie.getDesciptionLong()}"></span><br>
+        <div class="play-button-container play-button-container--big">
+            <a class="play-button" th:data-href="'/movie?movieid=' + ${movie.getId()} + '&play=true'"><b>Abspielen</b></a>
+            <a th:if="${movie.getPlayedTimeInSeconds() != null && movie.getPlayedTimeInSeconds() > 120}" class="play-button" th:data-href="'/movie/play?movieid=' + ${movie.getId()} + '&seconds=' + ${movie.getPlayedTimeInSeconds()}"><b>Fortsetzen</b></a>
+            <select class="select-device">
+                <option selected th:text="${userAgent.getUsername() + ' (self)'}" th:value="${userAgent.getId()}"></option>
+                <th:block th:each="userAgent : ${userAgents}">
+                    <option th:text="${userAgent.getUsername()}" th:value="${userAgent.getId()}"></option>
+                </th:block>
+            </select>
+        </div>
+    </div>
+    <div class="movie-img">
+        <img th:src="'/images/' + ${movie.getTitle()} + '.png'">
+    </div>
+</div>
+<div th:replace="_video::video(${movie.getTitle()})"></div>
+<script th:src="@{/js/movie.js}" src="../../resources/static/js/movie.js"></script>
+<script th:src="@{/js/MessageWorker.js}" src="../static/js/MessageWorker.js"></script>
+</body>
+</html>

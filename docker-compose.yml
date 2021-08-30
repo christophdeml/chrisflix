@@ -1,0 +1,40 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:5.7
+    restart: on-failure
+    environment:
+      MYSQL_DATABASE: 'chrisflix'
+      MYSQL_USER: 'chrisflix'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - db:/var/lib/mysql
+  chrisflix:
+    image: chrisflix:latest
+    restart: on-failure
+    depends_on:
+      - db
+    container_name: chrisflix
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_USER=chrisflix
+      - DATABASE_PASSWORD=password
+      - DATABASE_NAME=chrisflix
+      - DATABASE_PORT=3306
+    ports:
+      - "80:80"
+    expose:
+      - '80'
+    volumes:
+      - /hdd1/Filme/:/hdd1/Filme/
+volumes:
+  db:
+  chrisflix:

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="de">
+<head th:fragment="head(title)">
+    <title th:text="${title}">Chrisflix</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" href="/css/tile.css" th:href="@{/css/tile.css}">
+    <link rel="icon" href="/images/icon_chrisflix.png">
+</head>
+<body>
+<header th:fragment="header">
+    <a href="../"><img src="../../resources/static/images/small/chrisflix.png" th:src="@{/images/small/chrisflix.png}"></a>
+</header>
+</body>

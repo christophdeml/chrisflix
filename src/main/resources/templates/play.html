@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="de-DE">
+<head th:replace="_frame::head(${movie.getTitle()})"></head>
+<body th:data-movie-id="${movie.getId()}">
+<div class="video video-invisible">
+    <video autoplay th:src="'/video/' + ${movie.getTitle()} + '.mp4'" type='video/mp4'></video>
+</div>
+<script th:src="@{/js/play.js}" src="../static/js/play.js"></script>
+<script th:src="@{/js/MessageWorker.js}" src="../static/js/MessageWorker.js"></script>
+</body>
+</html>

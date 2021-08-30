@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "movies.directory",
+      "type": "java.lang.String",
+      "description": "Description for movies.directory."
+  }
+] }

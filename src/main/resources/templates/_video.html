@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="de">
+<body>
+<div th:fragment="video(video)" class="video-container">
+    <video muted th:data-src="'/video/' + ${video} + '.mp4'" type='video/mp4'></video>
+    <div class="video-controls">
+        <img class="btn-close" src="../../resources/static/images/close.png" th:src="@{/images/close.png}" onclick="minimizeMovie()">
+        <img class="btn-fullscreen" src="../../resources/static/images/fullscreen.png" th:src="@{/images/fullscreen.png}" onclick="toggleFullscreen()">
+        <img class="btn-play-pause" src="../../resources/static/images/play.png" th:src="@{/images/play.png}" onclick="toggleMovie()">
+        <div class="track-container">
+            <div class="track-line">
+                <div class="track-thumb"></div>
+                <span class="track-time-popup"></span>
+            </div>
+        </div>
+        <div class="time-container">
+            <span class="time-elapsed">00:00:00</span>
+            <span class="time-total">00:00:00</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

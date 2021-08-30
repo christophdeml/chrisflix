@@ -1,0 +1,34 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://db:3306/chrisflix?useUnicode=yes&characterEncoding=UTF-8
+    username: chrisflix
+    password: password
+    name: chrisflix
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+server:
+  port: 80
+  servlet:
+    session:
+      cookie:
+        http-only: false
+movies:
+  directory: /hdd1/Filme/
+  images:
+    directory: /hdd1/Filme/Bilder/
+---
+spring:
+  config:
+    activate:
+      on-profile: LOKAL
+  datasource:
+    url: jdbc:mysql://localhost:3306/chrisflix?useUnicode=yes&characterEncoding=UTF-8
+movies:
+  directory: /run/media/christophdeml/WD Elements/privat/Filme/
+  images:
+    directory: /run/media/christophdeml/WD Elements/privat/Filme/Bilder/
+server:
+  port: 8080
